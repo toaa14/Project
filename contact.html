@@ -1,0 +1,81 @@
+<?php
+include('db.php');
+?>
+<!DOCTYPE HTML>
+<html dir="rtl" lang="ar">
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact">
+    <link rel="icon" href="imgs/receiver.png" type="image/x-icon">
+    
+    <title>تــــواصـل مـعـانــا</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200&family=Lemonada:wght@300&family=Noto+Sans+Arabic:wght@600&family=Readex+Pro&family=Reem+Kufi+Fun&family=Reem+Kufi+Ink&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="topnav">
+        <a  href="index.html">الصفحة الرئيسية</a>
+        <a href="#news">الغرف</a>
+        <a href="about.html">نبذة عنا</a>
+        <a  class="active" href="index.html" > تواصل معانا</a>
+    </div>
+    <div class="container">
+        <div class="contact">تــــواصـل مـعـانــا</div>
+        <div class="parent">
+            <div class="info">
+                <p class="par">مـعـلـومـاتـنـا</p>
+                <div class="info1">
+                <i class="fa-solid fa-phone-volume" style="color:rgb(0, 38, 255)"></i>
+                <span class="number">٠١٢٥٥٩٦٤٠٨٨</span>
+                </div>
+                <div class="info2">
+                    <i class="fa-solid fa-envelope" style="color:rgb(0, 38, 255)"></i>
+                    <span class="number">HotelWeb@gmail.com</span>
+                </div>
+                <div class="info3">
+                    <i class="fa-solid fa-location-dot" style="color:rgb(0, 38, 255)"></i>
+                    <span class="number">مدينة السادات</span>
+                </div>
+                <div class="follow">تـابـعنــا</div>
+                <div class="icon">
+                    
+                    <a href="https://www.twitter.com/" target="_blank"><i class="fa-brands fa-twitter" style="color:rgb(0, 38, 255)"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram" style="color:rgb(238, 12, 12)"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"> <i class="fa-brands fa-facebook"
+                            style="color:rgb(0, 38, 255)"></i></a>
+                </div>
+            </div>
+            <div class="form">
+                
+                <form action="" method="post">
+                    <input  class="textinput"type="text" name="name" placeholder="ادخل اسمك" required="" oninvalid="this.setCustomValidity('من فضلك ادخل اسمك')"
+                        oninput="setCustomValidity('')"><br>
+                    <input  class="textinput" type="email" name="email" placeholder="ادخل ايميل صالح " required oninvalid="this.setCustomValidity('من فضلك ادخل بريد صالح')" oninput="setCustomValidity('')"> <br>
+                    <textarea placeholder="من فضلك ادخل رسالتك" required oninvalid="this.setCustomValidity('من فضلك ادخل رسالتك')" oninput="setCustomValidity('')"></textarea><br><br>
+                    <input class="submit"type="submit" name="sub" value="ارسـال">
+                </form>
+                <?php
+                    if(isset($_POST['sub'])){
+                        $name=$_POST['name'];
+                        $email=$_POST['email'];
+                        $approval="Not allowed";
+                        $sql = "INSERT INTO `contact`(`name`, `email`,`cdate`,`approval`) VALUES ('$name','$email',now(),'$approval')" ;
+                        if(mysqli_query($con,$sql))
+                        echo"OK";
+                    }
+                
+                ?>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
